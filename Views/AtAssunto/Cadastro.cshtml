@@ -1,0 +1,22 @@
+@model AtAssunto
+@{
+    ViewData["Title"] = "Cadastro de Assunto de Demandas";
+}
+<div class="container p-5">
+    <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
+
+        <p class="mb-3"><label  asp-for="Assunto" class="form-label">Informe o assunto: </label>
+        <input asp-for="Assunto" class="form-control"></p>
+        <p class="mb-3"><label asp-for="Descricao" class="form-label">Informe a descrição: </label>
+        <input asp-for="Descricao" class="form-control"></p>
+        
+
+        <p>
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </p>
+
+    </form>
+</div>
+<P>
+    @ViewBag.Mensagem
+</P>

@@ -1,0 +1,34 @@
+@model List<Usuarios>
+@{
+    ViewData["Title"] = "Lista";
+}
+<table class="table table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th class="text-light">Matrícula</th>
+            <th class="text-light">Nome</th>
+            <th class="text-light">Empresa</th>
+            <th class="text-light">Telefone</th>
+            <th class="text-light">Zap</th>
+            <th class="text-light">E-mail</th>
+            <th class="text-light">Ações</th>
+        </tr>
+    </thead>
+    @foreach (Usuarios a in Model)
+    {
+       <tr>
+            <td>@a.matricula</td>
+            <td>@a.nome_completo</td>
+            <td>@a.empresa</td>
+            <td>@a.telefone1</td>
+            <td>
+                <a href="https://api.whatsapp.com/send?phone=@a.telefone1">Conversar pelo zap</a>
+            </td>
+            <td>@a.email</td>
+            <td>
+                <a href="/Usuarios/Editar?Id=@a.id_usuario">Editar</a> /
+                <a href="/Usuarios/Remover?Id=@a.id_usuario">Excluir</a>
+            </td>
+        </tr> 
+    }
+</table>

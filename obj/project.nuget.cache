@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "QT2vWH7+k5yNIOZa7JuJSN3icgwcihQi/vMaK8vwG2cFp7ojTLgj1bSHjTv2pKIiDyBdFNriIDdOsIvuxIG38A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\IVO\\Desktop\\sistemanovo\\sistemanovo.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\IVO\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,27 @@
+@model List<AtAssunto>
+@{
+    ViewData["Title"] = "Lista - Assuntos";
+}
+<table class="table table-hover">
+    <thead class="bg-primary">
+        <tr>
+            @* <th class="text-light">Id</th> *@
+            <th class="text-light">Assunto</th>
+            <th class="text-light">Descrição</th>
+            <th class="text-light">Ações</th>
+           
+        </tr>
+    </thead>
+    @foreach (AtAssunto a in Model)
+    {
+       <tr>
+            @* <td>@a.IdAtAssunto</td> *@
+            <td>@a.Assunto</td>
+            <td>@a.Descricao</td>
+            <td>       
+                <a href="/AtAssunto/Editar?Id=@a.IdAtAssunto">Editar</a>
+                @* <a href="/AtAssunto/Remover?Id=@a.IdAtAssunto">Excluir</a> *@
+            </td>
+        </tr> 
+    }
+</table>
