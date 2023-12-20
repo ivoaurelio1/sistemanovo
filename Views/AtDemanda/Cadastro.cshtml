@@ -5,6 +5,7 @@
 
 <div class="container p-5">
     <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
+    <input type="hidden" asp-for="IdAtDemanda">
 
         <p class="mb-3"><label asp-for="DataHora" class="form-label">Data / Hora abertura: </label>
             <input asp-for="DataHora" class="form-control">
@@ -24,8 +25,6 @@
         <p class="mb-3"><label asp-for="Observacao" class="form-label">Observacao: </label>
             <input asp-for="Observacao" class="form-control">
         </p>
-
-
         <p>
             <input type="submit" class="btn btn-primary" value="Cadastrar">
             <a class="btn btn-primary" href="/AtDemanda/Lista">Voltar</a>
