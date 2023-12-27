@@ -4,36 +4,53 @@ using System.Linq;
 using System.Threading.Tasks;
 using MySqlConnector;
 
-namespace sistemanovo.Models
+namespace sistemanovo.Models.ViewModels
 {
     public class AtDemandaRepository
     {
          private const String DadosConexao = "Database=cttu; Data Source=localhost; User Id=root;";
 
-        public void Inserir(AtDemanda atd)
+        public void Inserir(CadastroDemandaViewModel atd)
         {
-            
-
-
-
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
             String Query = "Insert into at_demandas (DataHora, IdUsuario, Reclamante, Telefone, IdAssunto, Observacao) values (@DataHora, @IdUsuario, @Reclamante, @Telefone, @IdAssunto, @Observacao)";
 
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
 
-            Comando.Parameters.AddWithValue("@IdAtDemanda", atd.IdAtDemanda);
-            Comando.Parameters.AddWithValue("@DataHora", atd.DataHora);
-            Comando.Parameters.AddWithValue("@IdUsuario", atd.IdUsuario);
-            Comando.Parameters.AddWithValue("@Reclamante", atd.Reclamante);
-            Comando.Parameters.AddWithValue("@Telefone", atd.Telefone);
-            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto);
-            Comando.Parameters.AddWithValue("@Observacao", atd.Observacao);
+            Comando.Parameters.AddWithValue("@IdAtDemanda", atd.Demandas.IdAtDemanda);
+            Comando.Parameters.AddWithValue("@DataHora", atd.Demandas.DataHora);
+            Comando.Parameters.AddWithValue("@IdUsuario", atd.Demandas.IdUsuario);
+            Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
+            Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
+            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAtAssunto);
+            Comando.Parameters.AddWithValue("@Observacao", atd.Demandas.Observacao);
 
             Comando.ExecuteNonQuery();
             Conexao.Close();
 
         }
+
+        // public void Inserir(AtDemanda atd)
+        // {
+        //     MySqlConnection Conexao = new MySqlConnection(DadosConexao);
+        //     Conexao.Open();
+        //     String Query = "Insert into at_demandas (DataHora, IdUsuario, Reclamante, Telefone, IdAssunto, Observacao) values (@DataHora, @IdUsuario, @Reclamante, @Telefone, @IdAssunto, @Observacao)";
+
+        //     MySqlCommand Comando = new MySqlCommand(Query, Conexao);
+
+        //     Comando.Parameters.AddWithValue("@IdAtDemanda", atd.IdAtDemanda);
+        //     Comando.Parameters.AddWithValue("@DataHora", atd.DataHora);
+        //     Comando.Parameters.AddWithValue("@IdUsuario", atd.IdUsuario);
+        //     Comando.Parameters.AddWithValue("@Reclamante", atd.Reclamante);
+        //     Comando.Parameters.AddWithValue("@Telefone", atd.Telefone);
+        //     Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto);
+        //     Comando.Parameters.AddWithValue("@Observacao", atd.Observacao);
+
+        //     Comando.ExecuteNonQuery();
+        //     Conexao.Close();
+
+        // }
 
 
         public void Alterar(AtDemanda atd)
@@ -59,7 +76,7 @@ namespace sistemanovo.Models
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
-            String Query = "Select * From at_demandas";
+            String Query = "SELECT ata.IdAtDemanda, ata.DataHora, u.nome_usuario, ata.Reclamante, ata.Telefone, a.Assunto, ata.Observacao FROM at_demandas ata JOIN at_assunto a JOIN usuarios u ON ata.IdAssunto = a.IdAtAssunto AND ata.IdUsuario = u.id_usuario";
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
             MySqlDataReader Reader = Comando.ExecuteReader();
 
@@ -67,19 +84,39 @@ namespace sistemanovo.Models
 
             while (Reader.Read())
             {
-                AtDemanda demandaEncontrada = new AtDemanda
-                {
-                    IdAtDemanda = Reader.GetInt32("IdAtDemanda"),
-                    DataHora = Reader.GetDateTime("DataHora"),
-                    IdUsuario = Reader.GetInt32("IdUsuario"),
-                    Reclamante = Reader.GetString("Reclamante"),
-                    Telefone = Reader.GetString("Telefone"),
-                    IdAssunto = Reader.GetInt32("IdAssunto"),
-                    Observacao = Reader.GetString("Observacao"),
+                // AtDemanda demandaEncontrada = new AtDemanda
+                // {
+                    
+                //     IdAtDemanda = Reader.GetInt32("IdAtDemanda"),
+                //     DataHora = Reader.GetDateTime("DataHora"),
+                //     nome_usuario = Reader.GetString("nome_usuario"),
+                //     Reclamante = Reader.GetString("Reclamante"),
+                //     Telefone = Reader.GetString("Telefone"),
+                //     // Assunto = Reader.GetOrdinal("Assunto"),
+                //     Observacao = Reader.GetString("Observacao"),
 
-                };
+                // };
+                AtDemanda demanda = new AtDemanda();
+                    
+                    demanda.IdAtDemanda = Reader.GetInt32("IdAtDemanda");
+                    demanda.DataHora = Reader.GetDateTime("DataHora");
 
-                Lista.Add(demandaEncontrada);
+                    //>>>>>>>>>>>>>
+                    Usuarios usu = new Usuarios();
+                    usu.nome_usuario = Reader.GetString("nome_usuario");
+                    
+                    demanda.Reclamante = Reader.GetString("Reclamante");
+                    demanda.Telefone = Reader.GetString("Telefone");
+
+                    //>>>>>>>>>>>>
+                    AtAssunto ass = new AtAssunto();
+                    ass.Assunto = Reader.GetString("Assunto");
+                    
+                    demanda.Observacao = Reader.GetString("Observacao");
+
+                ;
+
+                Lista.Add(demanda);
             }
 
             Conexao.Close();

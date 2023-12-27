@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using sistemanovo.Models;
+using sistemanovo.Models.ViewModels;
 
 namespace sistemanovo.Controllers
 {
@@ -11,14 +12,22 @@ namespace sistemanovo.Controllers
     {
         public IActionResult Cadastro()
         {
-            return View();
+            CadastroDemandaViewModel cadastroDemandaViewModel = new CadastroDemandaViewModel();
+            List<AtDemanda> listaDemandas = new List<AtDemanda>();
+            List<AtAssunto> listaAssuntos = new List<AtAssunto>();
+
+            cadastroDemandaViewModel.ListaDemandas = listaDemandas;
+            cadastroDemandaViewModel.ListaAssuntos = listaAssuntos;
+            return View(cadastroDemandaViewModel);
         }
 
         [HttpPost]
-        public IActionResult Cadastro(AtDemanda atd)
+        public IActionResult Cadastro(CadastroDemandaViewModel atd)
         {
             AtDemandaRepository us = new AtDemandaRepository();
             // AtDemanda novaDemanda = new AtDemanda();
+            AtDemanda novaDemanda = new AtDemanda();
+            novaDemanda.IdAtDemanda = atd.IdAtDemanda;
             DateTime now = DateTime.Now;
             // var DataHora = now;
 

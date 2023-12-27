@@ -1,11 +1,49 @@
 @model List<AtDemanda>
+@{    ViewData["Title"] = "Atendimento - Lista";
+}
+<table class="table table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th class="text-light">Id</th>
+            <th class="text-light">Data / Hora abertura</th>
+            <th class="text-light">Usuário</th>
+            <th class="text-light">Reclamante</th>
+            <th class="text-light">Telefone Reclamante</th>
+            <th class="text-light">Assunto</th>
+            <th class="text-light">Observações</th>
+            <th class="text-light">Ações</th>
+        </tr>
+    </thead>
+    @foreach (AtDemanda a in Model)
+    {
+       <tr>
+            <td>@a.IdAtDemanda</td>
+            <td>@a.DataHora</td>
+            <td>@a.IdUsuario</td>
+            <td>@a.Reclamante</td>
+            <td>@a.Telefone</td>
+            <td>@a.IdAssunto</td>
+            <td>@a.Observacao</td>
+            <td>       
+                <a href="/AtDemanda/Editar?Id=@a.IdAtDemanda">Editar</a>
+                @* <a href="/AtAssunto/Remover?Id=@a.IdAtAssunto">Excluir</a> *@
+            </td>
+        </tr> 
+    }
+
+</tr> 
+</table>
+
+
+
+@* @model List<AtDemanda>
 @{
     ViewData["Title"] = "Atendimento - Lista";
 }
 <table class="table table-hover">
     <thead class="bg-primary">
         <tr>
-            @* <th class="text-light">Id</th> *@
+            <th class="text-light">Id</th> ////
             <th class="text-light">Data / Hora abertura</th>
             <th class="text-light">Usuário</th>
             <th class="text-light">Reclamante</th>
@@ -26,8 +64,8 @@
             <td>@a.Observacao</td>
             <td>       
                 <a href="/AtDemanda/Editar?Id=@a.IdAtDemanda">Editar</a>
-                @* <a href="/AtAssunto/Remover?Id=@a.IdAtAssunto">Excluir</a> *@
+                <a href="/AtAssunto/Remover?Id=@a.IdAtAssunto">Excluir</a> ///////
             </td>
         </tr> 
     }
-</table>
+</table> *@
