@@ -2,98 +2,146 @@
 @{
     ViewData["Title"] = "Cadastro";
 }
-<div class="container p-5">
-    <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
-        
 
-        <p class="mb-3"><label  asp-for="bar_code" class="form-label">Código de barras: </label>
-        <input asp-for="bar_code" class="form-control"></p>
-        <p class="mb-3"><label asp-for="cpf" class="form-label">CPF: </label>
-        <input asp-for="cpf" class="form-control"></p>
-        <p class="mb-3"><label asp-for="rg_n" class="form-label">RG: </label>
-        <input asp-for="rg_n" class="form-control"></p>
-        <p class="mb-3"><label asp-for="rg_emissor" class="form-label">Órgão Emissor: </label>
-        <input asp-for="rg_emissor" class="form-control"></p>
-        <p class="mb-3"><label asp-for="rg_uf" class="form-label">UF: </label>
-        <input asp-for="rg_uf" class="form-control"></p>
-        <p class="mb-3"><label asp-for="rg_data_emissao" class="form-label">Data de emissão: </label>
-        <input asp-for="rg_data_emissao" class="form-control"></p>
-        <p class="mb-3"><label asp-for="senha" class="form-label">Senha: </label>
-        <input asp-for="senha" class="form-control"></p>
-        <p class="mb-3"><label asp-for="matricula" class="form-label">Matrícula: </label>
-        <input asp-for="matricula" class="form-control"></p>
-        <p class="mb-3"><label asp-for="nome_completo" class="form-label">Nome completo: </label>
-        <input asp-for="nome_completo" class="form-control"></p>
-        <p class="mb-3"><label asp-for="nome_usuario" class="form-label">Usuário: </label>
-        <input asp-for="nome_usuario" class="form-control"></p>
-        <p class="mb-3"><label asp-for="empresa" class="form-label">Empresa: </label>
-        <input asp-for="empresa" class="form-control"></p>
+<div id="cadastro">
+    
+        <form class="p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
+            
+           
+            <legend>Dados Pessoais</legend>
+            <div class="dados row">
+                <p class="mb-3 col-8"><label asp-for="nome_completo" class="form-label">Nome completo: </label>
+                <input asp-for="nome_completo" class="form-control"></p>
+                <p class="mb-3 col-4"><label asp-for="nome_usuario" class="form-label">Usuário: </label>
+                <input asp-for="nome_usuario" class="form-control"></p>
+            </div>
+           
+            <div class="dados row">
+                <p class="mb-3 col-4"><label asp-for="empresa" class="form-label">Empresa: </label>
+                <input asp-for="empresa" class="form-control"></p>
+                <p class="mb-3 col-3"><label asp-for="matricula" class="form-label">Matrícula: </label>
+                <input asp-for="matricula" class="form-control"></p>
+                <p class="mb-3 col-3"><label asp-for="data_adm" class="form-label">Data de admissão: </label>
+                <input asp-for="data_adm" class="form-control"></p>
+                <p class="mb-3 col-2"><label asp-for="data_adm" class="form-label">Graduação: </label>
+                <input asp-for="data_adm" class="form-control"></p>
+            </div>
+            <div class="dados row">
+                <p class="mb-3 col-4"><label asp-for="data_nasc" class="form-label">Data de nascimento: </label>
+                <input asp-for="data_nasc" class="form-control"></p>
+            
+                <p class="mb-3 col-4"><label asp-for="fator_rh" class="form-label">Tipo sanguíneo: </label>
+                <input asp-for="fator_rh" class="form-control"></p>
+                
+                <p class="mb-3 col-4"><label asp-for="genero" class="form-label">Gênero: </label>
+                <input asp-for="genero" class="form-control"></p>
+            </div>
+           
+            <div class="dados row">
+                <p class="mb-3 col-3"><label  asp-for="bar_code" class="form-label">Código de barras: </label>
+                <input asp-for="bar_code" class="form-control"></p> 
+                <p class="mb-3 col-3"><label asp-for="cpf" class="form-label">CPF: </label>
+                <input asp-for="cpf" class="form-control"></p>               
+                <p class="mb-3 col-3"><label asp-for="rg_n" class="form-label">RG: </label>
+                <input asp-for="rg_n" class="form-control"></p>
+                <p class="mb-3 col-2"><label asp-for="rg_emissor" class="form-label">Órgão Emissor: </label>
+                <input asp-for="rg_emissor" class="form-control"></p>
+                <p class="mb-3 col-1"><label asp-for="rg_uf" class="form-label">UF: </label>
+                <input asp-for="rg_uf" class="form-control"></p>
+            </div>
+            
+                  
+            <div class="dados row">
+                <p class="mb-3 col-6"><label asp-for="email" class="form-label">E-mail: </label>
+                <input asp-for="email" class="form-control"></p>
+            
+                <p class="mb-3 col-3"><label asp-for="telefone1" class="form-label">Telefone 1: </label>
+                <input asp-for="telefone1" class="form-control"></p>
+            
+                <p class="mb-3 col-3"><label asp-for="telefone2" class="form-label">Telefone 2: </label>
+                <input asp-for="telefone2" class="form-control"></p>
+            </div>
+            
+                  
 
-        <div class="container d-inline-flex">
-            <p class="mb-3 me-3">
-            <label asp-for="atendente" class="form-label">É atendente?: </label>
-            <input asp-for="atendente" class="form-check-input">
-            </p>
-            <p class="mb-3 me-3">
-            <label asp-for="ativo" class="form-label">Está ativo?: </label>
-            <input asp-for="ativo" class="form-check-input">
-            </p>
-            <p class="mb-3 me-3">
-            <label asp-for="operador" class="form-label">É operador?: </label>
-            <input asp-for="operador" class="form-check-input">
-            </p>
-            <p class="mb-3 me-3">
-            <label asp-for="agente" class="form-label">É agente?: </label>
-            <input asp-for="agente" class="form-check-input"></p>
-        </div>
-        <p class="mb-3"><label asp-for="email" class="form-label">E-mail: </label>
-        <input asp-for="email" class="form-control"></p>
-        <p class="mb-3"><label asp-for="telefone1" class="form-label">Telefone 1: </label>
-        <input asp-for="telefone1" class="form-control"></p>
-        <p class="mb-3"><label asp-for="telefone2" class="form-label">Telefone 2: </label>
-        <input asp-for="telefone2" class="form-control"></p>
-        <p class="mb-3"><label asp-for="data_nasc" class="form-label">Data de nascimento: </label>
-        <input asp-for="data_nasc" class="form-control"></p>
-        <p class="mb-3"><label asp-for="fator_rh" class="form-label">Tipo sanguíneo: </label>
-        <input asp-for="fator_rh" class="form-control"></p>
-        <p class="mb-3"><label asp-for="data_adm" class="form-label">Data de admissão: </label>
-        <input asp-for="data_adm" class="form-control"></p>
-        <p class="mb-3"><label asp-for="endereco" class="form-label">Rua/Avenida: </label>
-        <input asp-for="endereco" class="form-control"></p>
-        <p class="mb-3"><label asp-for="endereco_numero" class="form-label">Nº: </label>
-        <input asp-for="endereco_numero" class="form-control"></p>
-        <p class="mb-3"><label asp-for="endereco_cep" class="form-label">CEP: </label>
-        <input asp-for="endereco_cep" class="form-control"></p>
-        <p class="mb-3"><label asp-for="endereco_comp" class="form-label">Complemento: </label>
-        <input asp-for="endereco_comp" class="form-control"></p>
-        <p class="mb-3"><label asp-for="bairro" class="form-label">Bairro: </label>
-        <input asp-for="bairro" class="form-control"></p>
-        <p class="mb-3"><label asp-for="cidade" class="form-label">Cidade: </label>
-        <input asp-for="cidade" class="form-control"></p>
-        <p class="mb-3"><label asp-for="estado_sigla" class="form-label">UF: </label>
-        <input asp-for="estado_sigla" class="form-control"></p>
-        <p class="mb-3"><label asp-for="genero" class="form-label">Gênero: </label>
-        <input asp-for="genero" class="form-control"></p>
-        <p class="mb-3"><label asp-for="nome_pai" class="form-label">Nome do pai: </label>
-        <input asp-for="nome_pai" class="form-control"></p>
-        <p class="mb-3"><label asp-for="nome_mae" class="form-label">Nome da mãe: </label>
-        <input asp-for="nome_mae" class="form-control"></p>
-        <p class="mb-3"><label asp-for="nacionalidade" class="form-label">Nacionalidade: </label>
-        <input asp-for="nacionalidade" class="form-control"></p>
-        <p class="mb-3"><label asp-for="naturalidade" class="form-label">Naturalidade: </label>
-        <input asp-for="naturalidade" class="form-control"></p>
-        <p class="mb-3"><label asp-for="habilitado" class="form-label">É habilitado?: </label>
-        <input asp-for="habilitado" class="form-control form-check-input"></p>
-        <p class="mb-3"><label asp-for="habilitacao_numero" class="form-label">Nº habilitação: </label>
-        <input asp-for="habilitacao_numero" class="form-control"></p>
-        <p class="mb-3"><label asp-for="habilitacao_categoria" class="form-label">Categoria CNH: </label>
-        <input asp-for="habilitacao_categoria" class="form-control"></p>
+            <div class="dados row">
+                <p class="mb-3 col-6"><label asp-for="endereco" class="form-label">Rua/Avenida: </label>
+                <input asp-for="endereco" class="form-control"></p>
+            
+                <p class="mb-3 col-1"><label asp-for="endereco_numero" class="form-label">Nº: </label>
+                <input asp-for="endereco_numero" class="form-control"></p>
+                
+                <p class="mb-3 col-2"><label asp-for="endereco_cep" class="form-label">CEP: </label>
+                <input asp-for="endereco_cep" class="form-control"></p>
+                
+                <p class="mb-3 col-3"><label asp-for="endereco_comp" class="form-label">Complemento: </label>
+                <input asp-for="endereco_comp" class="form-control"></p>
+            </div>
 
-        <p>
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
-        </p>
+            
+            <div class="dados row">
+                <p class="mb-3 col-5"><label asp-for="bairro" class="form-label">Bairro: </label>
+                <input asp-for="bairro" class="form-control"></p>
+                <p class="mb-3 col-6"><label asp-for="cidade" class="form-label">Cidade: </label>
+                <input asp-for="cidade" class="form-control"></p>
+                <p class="mb-3 col-1"><label asp-for="estado_sigla" class="form-label">UF: </label>
+                <input asp-for="estado_sigla" class="form-control"></p>
+            </div>
 
-    </form>
+            <br>
+            <legend>Filiação</legend>
+            <div class="dados row">
+                <p class="mb-3 col-6"><label asp-for="nome_pai" class="form-label">Nome do pai: </label>
+                <input asp-for="nome_pai" class="form-control"></p>
+                <p class="mb-3 col-6"><label asp-for="nome_mae" class="form-label">Nome da mãe: </label>
+                <input asp-for="nome_mae" class="form-control"></p>
+            </div>
+            
+            <br>
+            <legend>Dados Complementares</legend>
+            <div class="dados row">
+                <p class="mb-3 col-3"><label asp-for="nacionalidade" class="form-label">Nacionalidade: </label>
+                <input asp-for="nacionalidade" class="form-control"></p>
+            
+                <p class="mb-3 col-3"><label asp-for="naturalidade" class="form-label">Naturalidade: </label>
+                <input asp-for="naturalidade" class="form-control"></p>
+            
+                <p class="mb-3 col-4"><label asp-for="habilitacao_numero" class="form-label">Nº habilitação: </label>
+                <input asp-for="habilitacao_numero" class="form-control"></p>
+            
+                <p class="mb-3 col-2"><label asp-for="habilitacao_categoria" class="form-label">Categoria CNH: </label>
+                <input asp-for="habilitacao_categoria" class="form-control"></p>
+            </div>
+
+            <div class="dados row">
+                <p class="mb-3 col-3"><label asp-for="atendente" class="form-label">É atendente?: </label>
+                <input asp-for="atendente" class="form-check-input"></p>
+                <p class="mb-3 col-3"><label asp-for="ativo" class="form-label">Está ativo?: </label>
+                <input asp-for="ativo" class="form-check-input"></p>
+                <p class="mb-3 col-3"><label asp-for="operador" class="form-label">É operador?: </label>
+                <input asp-for="operador" class="form-check-input"></p>
+                <p class="mb-3 col-3"><label asp-for="agente" class="form-label">É agente?: </label>
+                <input asp-for="agente" class="form-check-input"></p>
+            </div>     
+
+                @* <p class="mb-3 col-2"><label asp-for="habilitado" class="form-label">É habilitado?: </label>
+                <input asp-for="habilitado" class="form-control form-check-input"></p> *@
+
+            <br>
+            <div class="dados row">    
+                <p class="mb-3 col-6"><label asp-for="senha" class="form-label">Senha: </label>
+                <input asp-for="senha" class="form-control"></p>
+                <p class="mb-3 col-6"><label asp-for="senha" class="form-label">Confirmar Senha: </label>
+                <input asp-for="senha" class="form-control"></p>
+            </div>
+
+            <div class="btn-cadastrar"> 
+                <button class="cadastro">
+                    <input type="submit" class="btn btn-primary" value="Cadastrar">
+                </button>
+           </div>
+        </form>
+    
 </div>
 <P>
     @ViewBag.Mensagem

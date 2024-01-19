@@ -8,7 +8,7 @@ namespace sistemanovo.Models
     public class AtAssunto
     {
         public int IdAtAssunto { get; set; }
-        public String Assunto { get; set; }
-        public String Descricao { get; set; }
+        public string Assunto { get; set; }
+        public string Descricao { get; set; }
     }
 }

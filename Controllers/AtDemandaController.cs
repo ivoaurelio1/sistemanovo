@@ -12,9 +12,17 @@ namespace sistemanovo.Controllers
     {
         public IActionResult Cadastro()
         {
+            AtAssuntoRepository assuntoRepo = new AtAssuntoRepository();
+            List<AtAssunto> listaAssuntos = assuntoRepo.Listar();
+
             CadastroDemandaViewModel cadastroDemandaViewModel = new CadastroDemandaViewModel();
+            cadastroDemandaViewModel.ListaAssuntos = listaAssuntos; 
+
+            // a mesma coisa de cima pra usuario
+
+            
             List<AtDemanda> listaDemandas = new List<AtDemanda>();
-            List<AtAssunto> listaAssuntos = new List<AtAssunto>();
+            // List<AtAssunto> listaAssuntos = new List<AtAssunto>();
 
             cadastroDemandaViewModel.ListaDemandas = listaDemandas;
             cadastroDemandaViewModel.ListaAssuntos = listaAssuntos;

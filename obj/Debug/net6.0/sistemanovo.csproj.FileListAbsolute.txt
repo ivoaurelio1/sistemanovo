@@ -26,3 +26,4 @@ C:\Users\IVO\Desktop\sistemanovo\obj\Debug\net6.0\sistemanovo.genruntimeconfig.c
 C:\Users\IVO\Desktop\sistemanovo\obj\Debug\net6.0\ref\sistemanovo.dll
 C:\Users\IVO\Desktop\sistemanovo\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\IVO\Desktop\sistemanovo\obj\Debug\net6.0\sistemanovo.csproj.CopyComplete
+C:\Users\IVO\Desktop\sistemanovo\bin\Debug\net6.0\Newtonsoft.Json.dll

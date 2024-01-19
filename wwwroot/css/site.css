@@ -8,6 +8,11 @@ html {
   }
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 html {
   position: relative;
   min-height: 100%;
@@ -17,3 +22,40 @@ body {
   margin-bottom: 60px;
 }
 
+#container-login {
+  width: 100%;
+  max-width: 588px;
+
+  margin: 60px auto 0px;
+}
+
+form.login {
+  width: 420px;
+  
+}
+
+#cadastro {
+  width: 100%;
+  margin: 0;
+
+}
+
+legend {
+  font-size: 32px;
+  font-weight: 600;
+  color: #044fa0;
+
+}
+
+button.cadastro {
+  border: none;
+  margin-top: 20px;
+  
+
+}
+
+.btn-cadastrar {
+  display: flex;
+  justify-content: end;
+  
+}

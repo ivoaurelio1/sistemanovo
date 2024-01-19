@@ -28,7 +28,7 @@
 </head>
 
 <body class="corpo">
-    <header class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-black border-bottom box-shadow mb-3">
+    <header class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-primary border-bottom box-shadow mb-3">
         <nav class="container-fluid">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sistemanovo</a>
@@ -42,8 +42,9 @@
                         @if (Context.Session.GetInt32("id_usuario") == null)
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-Light" asp-area="" asp-controller="Usuarios"
-                                    asp-action="Login">Entrar</a>
+                                @* <a class="nav-link text-Light" asp-area="" asp-controller="Usuarios" *@
+                                @* asp-action="Login">Entrar</a> *@
+                                <a class="nav-link text-Light" asp-area="" asp-controller="Usuarios" asp-action="Login"></a>
                             </li>
                         }
                         else
@@ -79,14 +80,13 @@
                                 <a class="nav-link text-Light" asp-area="" asp-controller="AtDemanda"
                                     asp-action="Lista">Lista de Demandas</a>
                             </li>
-
                             // Deslogar -----------
                             <li class="nav-item">
                                 <a class="nav-link text-Light" asp-area="" asp-controller="Usuarios"
                                     asp-action="Logout">Sair</a>
                             </li>
                         }
-
+                            <p class="position-absolute top-50 end-0 text-light pe-5">Olá, @Context.Session.GetString("nome_usuario")!</p>
                     </ul>
                 </div>
             </div>

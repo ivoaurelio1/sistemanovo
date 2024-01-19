@@ -3,25 +3,26 @@
     ViewData["title"] = "Login";
 }
 
-<form class="col-4 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Login">
+<div id="container-login">
+    <form class="login p-5 border rounded-1 shadow" method="POST" asp-action="Login">
 
-    <p class="mb-3">
-        <label asp-for="bar_code" class="form-label">Código de Barras: </label>
-        <input asp-for="bar_code" class="form-control">
-    </p>
+        <p class="mb-3">
+            <label asp-for="bar_code" class="form-label">Código de Barras: </label>
+            <input asp-for="bar_code" class="form-control">
+        </p>
 
-    <p class="mb-3">
+        <p class="mb-3">
 
-        <label asp-for="senha" class="form-label" >Senha</label>
-        <input asp-for="senha" type="password" class="form-control">
-    </p>
+            <label asp-for="senha" class="form-label" >Senha</label>
+            <input asp-for="senha" type="password" class="form-control">
+        </p>
 
-    <p class="mb-3">
-        <input type="submit" value="Entrar" class="form-control btn btn-primary">
-    </p>
+        <p class="mb-3">
+            <input type="submit" value="Entrar" class="form-control btn btn-primary">
+        </p>
 
-</form>
-
+    </form>
+</div>
 <p>
     @ViewBag.Mensagem
 </p>

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QT2vWH7+k5yNIOZa7JuJSN3icgwcihQi/vMaK8vwG2cFp7ojTLgj1bSHjTv2pKIiDyBdFNriIDdOsIvuxIG38A==",
+  "dgSpecHash": "lp1cE0mJJtVoUlXYjSiJY4BHcitEBVW8dUtCWVLNxwfqpaHAGNxJeCRm3mbQWSqsKX2lZTwKZWLemIuJDm2YKg==",
   "success": true,
   "projectFilePath": "C:\\Users\\IVO\\Desktop\\sistemanovo\\sistemanovo.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\IVO\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512"
+    "C:\\Users\\IVO\\.nuget\\packages\\mysqlconnector\\2.2.7\\mysqlconnector.2.2.7.nupkg.sha512",
+    "C:\\Users\\IVO\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

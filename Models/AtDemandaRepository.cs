@@ -23,7 +23,8 @@ namespace sistemanovo.Models.ViewModels
             Comando.Parameters.AddWithValue("@IdUsuario", atd.Demandas.IdUsuario);
             Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
             Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
-            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAtAssunto);
+            AtAssunto atAssunto = new AtAssunto();
+            Comando.Parameters.AddWithValue("@IdAssunto", atAssunto.IdAtAssunto); // isso aqui tava atd.IdAtAssunto
             Comando.Parameters.AddWithValue("@Observacao", atd.Demandas.Observacao);
 
             Comando.ExecuteNonQuery();
@@ -76,43 +77,57 @@ namespace sistemanovo.Models.ViewModels
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
-            String Query = "SELECT ata.IdAtDemanda, ata.DataHora, u.nome_usuario, ata.Reclamante, ata.Telefone, a.Assunto, ata.Observacao FROM at_demandas ata JOIN at_assunto a JOIN usuarios u ON ata.IdAssunto = a.IdAtAssunto AND ata.IdUsuario = u.id_usuario";
+            String Query = "SELECT d.IdAtDemanda as IdAtDemanda, d.DataHora, u.nome_usuario as NomeUsuario, d.Reclamante, d.Telefone, a.Assunto as Assunto, d.Observacao FROM at_demandas d JOIN at_assunto a JOIN usuarios u ON d.IdAssunto = a.IdAtAssunto AND d.IdUsuario = u.id_usuario;";
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
+
             MySqlDataReader Reader = Comando.ExecuteReader();
 
             List<AtDemanda> Lista = new List<AtDemanda>();
 
             while (Reader.Read())
             {
-                // AtDemanda demandaEncontrada = new AtDemanda
-                // {
-                    
-                //     IdAtDemanda = Reader.GetInt32("IdAtDemanda"),
-                //     DataHora = Reader.GetDateTime("DataHora"),
-                //     nome_usuario = Reader.GetString("nome_usuario"),
-                //     Reclamante = Reader.GetString("Reclamante"),
-                //     Telefone = Reader.GetString("Telefone"),
-                //     // Assunto = Reader.GetOrdinal("Assunto"),
-                //     Observacao = Reader.GetString("Observacao"),
-
-                // };
                 AtDemanda demanda = new AtDemanda();
                     
                     demanda.IdAtDemanda = Reader.GetInt32("IdAtDemanda");
-                    demanda.DataHora = Reader.GetDateTime("DataHora");
 
-                    //>>>>>>>>>>>>>
-                    Usuarios usu = new Usuarios();
-                    usu.nome_usuario = Reader.GetString("nome_usuario");
+                    demanda.DataHora = Reader.GetDateTime("DataHora");
+                    
+                    demanda.oUsuario = new Usuarios();
+                    demanda.oUsuario.nome_usuario = Reader.GetString("NomeUsuario");
+
+                    // demanda.IdUsuario = Reader.GetInt32("IdUsuario");
+
+                    demanda.atAssunto = new AtAssunto();
+                    demanda.atAssunto.Assunto = Reader.GetString("Assunto");
+
                     
                     demanda.Reclamante = Reader.GetString("Reclamante");
                     demanda.Telefone = Reader.GetString("Telefone");
+                    demanda.Observacao = Reader.GetString("Observacao");
+
+                    //>>>>>>>>>>>>>
+                    // demanda.oUsuario.nome_usuario = Reader.GetString("nome_usuario");
+
+                    // Usuarios usu = new Usuarios();
+
+                    // demanda.oUsuario = new Usuarios();
+                    // demanda.oUsuario.id_usuario = Reader.GetInt32("IdUsuario");
+
+
+                    // usu.nome_usuario = Reader.GetString("nome_usuario");
+                    // usu.id_usuario = Reader.GetInt32("IdUsuario");
+                    // usu.nome_usuario = Reader.GetString("nome_usuario");
+
+                    // demanda.atAssunto.IdAtAssunto = Reader.GetInt32("IdAtAssunto");
+                    
 
                     //>>>>>>>>>>>>
-                    AtAssunto ass = new AtAssunto();
-                    ass.Assunto = Reader.GetString("Assunto");
+                    // AtAssunto ass = new AtAssunto();
+                    // ass.Assunto = Reader.GetString("IdAssunto");
+
+                    // demanda.atAssunto = new AtAssunto();
+                    // demanda.atAssunto.IdAtAssunto = Reader.GetInt32("");
                     
-                    demanda.Observacao = Reader.GetString("Observacao");
 
                 ;
 
