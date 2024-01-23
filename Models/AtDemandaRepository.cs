@@ -23,7 +23,7 @@ namespace sistemanovo.Models.ViewModels
             Comando.Parameters.AddWithValue("@IdUsuario", atd.Demandas.IdUsuario);
             Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
             Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
-            AtAssunto atAssunto = new AtAssunto();
+            // AtAssunto atAssunto = new AtAssunto();
             Comando.Parameters.AddWithValue("@IdAssunto", atd.Demandas.IdAssunto); // isso aqui tava atd.IdAtAssunto
             Comando.Parameters.AddWithValue("@Observacao", atd.Demandas.Observacao);
 
@@ -37,10 +37,12 @@ namespace sistemanovo.Models.ViewModels
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
-            String Query = "Update at_demandas set Reclamante=@Reclamante, Telefone=@Telefone, IdAssunto=@IdAssunto, Observacao=@Observacao where IdAtDemanda=@IdAtDemanda";
+            String Query = "Update at_demandas set IdUsuario=@IdUsuario, Reclamante=@Reclamante, Telefone=@Telefone, IdAssunto=@IdAssunto, Observacao=@Observacao where IdAtDemanda=@IdAtDemanda";
 
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
             
+
+            Comando.Parameters.AddWithValue("@IdUsuario", atd.Demandas.IdUsuario);
             Comando.Parameters.AddWithValue("@IdAtDemanda", atd.Demandas.IdAtDemanda);
             Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
             Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
