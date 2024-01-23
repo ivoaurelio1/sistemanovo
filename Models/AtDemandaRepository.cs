@@ -24,34 +24,13 @@ namespace sistemanovo.Models.ViewModels
             Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
             Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
             AtAssunto atAssunto = new AtAssunto();
-            Comando.Parameters.AddWithValue("@IdAssunto", atAssunto.IdAtAssunto); // isso aqui tava atd.IdAtAssunto
+            Comando.Parameters.AddWithValue("@IdAssunto", atd.Demandas.IdAssunto); // isso aqui tava atd.IdAtAssunto
             Comando.Parameters.AddWithValue("@Observacao", atd.Demandas.Observacao);
 
             Comando.ExecuteNonQuery();
             Conexao.Close();
 
         }
-
-        // public void Inserir(AtDemanda atd)
-        // {
-        //     MySqlConnection Conexao = new MySqlConnection(DadosConexao);
-        //     Conexao.Open();
-        //     String Query = "Insert into at_demandas (DataHora, IdUsuario, Reclamante, Telefone, IdAssunto, Observacao) values (@DataHora, @IdUsuario, @Reclamante, @Telefone, @IdAssunto, @Observacao)";
-
-        //     MySqlCommand Comando = new MySqlCommand(Query, Conexao);
-
-        //     Comando.Parameters.AddWithValue("@IdAtDemanda", atd.IdAtDemanda);
-        //     Comando.Parameters.AddWithValue("@DataHora", atd.DataHora);
-        //     Comando.Parameters.AddWithValue("@IdUsuario", atd.IdUsuario);
-        //     Comando.Parameters.AddWithValue("@Reclamante", atd.Reclamante);
-        //     Comando.Parameters.AddWithValue("@Telefone", atd.Telefone);
-        //     Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto);
-        //     Comando.Parameters.AddWithValue("@Observacao", atd.Observacao);
-
-        //     Comando.ExecuteNonQuery();
-        //     Conexao.Close();
-
-        // }
 
 
         public void Alterar(AtDemanda atd)
@@ -65,7 +44,7 @@ namespace sistemanovo.Models.ViewModels
             Comando.Parameters.AddWithValue("@IdAtDemanda", atd.IdAtDemanda);
             Comando.Parameters.AddWithValue("@Reclamante", atd.Reclamante);
             Comando.Parameters.AddWithValue("@Telefone", atd.Telefone);
-            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto);
+            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto); // 22/01/2024 17:14 - alterei o caminho pra ver se resolve a questão do NullReferenceException: Object reference not set to an instance of an object na View 'Editar'
             Comando.Parameters.AddWithValue("@Observacao", atd.Observacao);
 
             Comando.ExecuteNonQuery();
@@ -77,7 +56,7 @@ namespace sistemanovo.Models.ViewModels
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
-            String Query = "SELECT d.IdAtDemanda as IdAtDemanda, d.DataHora, u.nome_usuario as NomeUsuario, d.Reclamante, d.Telefone, a.Assunto as Assunto, d.Observacao FROM at_demandas d JOIN at_assunto a JOIN usuarios u ON d.IdAssunto = a.IdAtAssunto AND d.IdUsuario = u.id_usuario;";
+            String Query = "SELECT d.IdAtDemanda as IdAtDemanda, d.DataHora, u.nome_usuario as NomeUsuario, d.Reclamante, d.Telefone, a.Assunto as Assunto, d.Observacao FROM at_demandas d JOIN at_assunto a JOIN usuarios u ON d.IdAssunto = a.IdAtAssunto AND d.IdUsuario = u.id_usuario ORDER BY IdAtDemanda DESC;";
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
 
             MySqlDataReader Reader = Comando.ExecuteReader();
@@ -95,38 +74,13 @@ namespace sistemanovo.Models.ViewModels
                     demanda.oUsuario = new Usuarios();
                     demanda.oUsuario.nome_usuario = Reader.GetString("NomeUsuario");
 
-                    // demanda.IdUsuario = Reader.GetInt32("IdUsuario");
-
                     demanda.atAssunto = new AtAssunto();
                     demanda.atAssunto.Assunto = Reader.GetString("Assunto");
-
                     
                     demanda.Reclamante = Reader.GetString("Reclamante");
                     demanda.Telefone = Reader.GetString("Telefone");
                     demanda.Observacao = Reader.GetString("Observacao");
 
-                    //>>>>>>>>>>>>>
-                    // demanda.oUsuario.nome_usuario = Reader.GetString("nome_usuario");
-
-                    // Usuarios usu = new Usuarios();
-
-                    // demanda.oUsuario = new Usuarios();
-                    // demanda.oUsuario.id_usuario = Reader.GetInt32("IdUsuario");
-
-
-                    // usu.nome_usuario = Reader.GetString("nome_usuario");
-                    // usu.id_usuario = Reader.GetInt32("IdUsuario");
-                    // usu.nome_usuario = Reader.GetString("nome_usuario");
-
-                    // demanda.atAssunto.IdAtAssunto = Reader.GetInt32("IdAtAssunto");
-                    
-
-                    //>>>>>>>>>>>>
-                    // AtAssunto ass = new AtAssunto();
-                    // ass.Assunto = Reader.GetString("IdAssunto");
-
-                    // demanda.atAssunto = new AtAssunto();
-                    // demanda.atAssunto.IdAtAssunto = Reader.GetInt32("");
                     
 
                 ;
@@ -151,6 +105,7 @@ namespace sistemanovo.Models.ViewModels
 
         }
 
+        // 22/01/2024 - 17:17 ESSE TRECHO ABAIXO ESTÁ FUNCIONANDO MAS FIZ OUTRO PRA VER SE RESOLVE A QUESTÃO DO NullReferenceException: Object reference not set to an instance of an object
           public AtDemanda BuscarPorId(int IdAtDemanda)
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
@@ -176,6 +131,40 @@ namespace sistemanovo.Models.ViewModels
             return demandaEncontrada;
 
         }
+
+        // 22/01/2024 17:18 -  ABAIXO ESTOU TENTANDO CRIAR UM OUTRO 'BuscarPorId' PRA VER SE RESOLVE O PROBLEMA DO NullReferenceException: Object reference not set to an instance of an object
+
+
+
+        //   public AtDemanda BuscarPorId(int IdAtDemanda)
+        // {
+        //     MySqlConnection Conexao = new MySqlConnection(DadosConexao);
+        //     Conexao.Open();
+        //     String Query = "Select * From at_demandas where IdAtDemanda=@IdAtDemanda";
+        //     MySqlCommand Comando = new MySqlCommand(Query, Conexao);
+        //     Comando.Parameters.AddWithValue("@IdAtDemanda", IdAtDemanda);
+        //     MySqlDataReader Reader = Comando.ExecuteReader();
+        //     CadastroDemandaViewModel cad = new CadastroDemandaViewModel(); comentar isso
+        //     CadastroDemandaViewModel demandaEncontrada = new CadastroDemandaViewModel();
+        //     AtDemanda atDemanda = new AtDemanda();
+
+        //     if (Reader.Read())
+        //     {
+        //         atDemanda.IdAtDemanda = Reader.GetInt32("IdAtDemanda");
+                
+        //         atDemanda.DataHora = Reader.GetDateTime("DataHora");
+        //         demandaEncontrada.Demandas.DataHora = Reader.GetDateTime("DataHora"); comentar isso
+        //         atDemanda.IdUsuario = Reader.GetInt32("IdUsuario");            
+        //         atDemanda.Reclamante = Reader.GetString("Reclamante");            
+        //         atDemanda.Telefone = Reader.GetString("Telefone");            
+        //         demandaEncontrada.Demandas.atAssunto.IdAtAssunto = Reader.GetInt32("IdAssunto"); comentar isso         
+        //         atDemanda.Observacao = Reader.GetString("Observacao");           
+        //     }
+
+        //     Conexao.Close();
+        //     return atDemanda;
+
+        // }
 
     }
 }

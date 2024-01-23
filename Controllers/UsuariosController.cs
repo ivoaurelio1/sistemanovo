@@ -12,12 +12,22 @@ namespace sistemanovo.Controllers
     {
         public IActionResult Cadastro()
         {
+             if (HttpContext.Session.GetInt32("id_usuario") == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+            
             return View();
         }
 
         [HttpPost]
         public IActionResult Cadastro(Usuarios usu)
         {
+             if (HttpContext.Session.GetInt32("id_usuario") == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
             UsuariosRepository us = new UsuariosRepository();
             us.Inserir(usu);
             ViewBag.Mensagem = "Cadastro realizado!";
@@ -50,6 +60,11 @@ namespace sistemanovo.Controllers
         }
         public IActionResult Editar(int Id)
         {
+             if (HttpContext.Session.GetInt32("id_usuario") == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
             UsuariosRepository us = new UsuariosRepository();
             Usuarios usuarioLocalizado = us.BuscarPorId(Id);
             return View(usuarioLocalizado);
@@ -58,6 +73,11 @@ namespace sistemanovo.Controllers
         [HttpPost]
         public IActionResult Editar(Usuarios usu)
         {
+             if (HttpContext.Session.GetInt32("id_usuario") == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
             UsuariosRepository us = new UsuariosRepository();
             us.Alterar(usu);
             return RedirectToAction("Lista", "Usuarios");

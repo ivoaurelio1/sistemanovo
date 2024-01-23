@@ -14,20 +14,6 @@ namespace sistemanovo.Models
 
         // Operadores de manipulação da tabela Usuários.
 
-        // CRUD
-
-        // public void TestarConexao()
-        // {
-        //     MySqlConnection Conexao = new MySqlConnection(DadosConexao);
-
-        //     Conexao.Open();
-
-        //     Console.WriteLine("Banco de Dados funcionando!");
-
-        //     Conexao.Close();
-
-        // }
-
         public void Excluir(Usuarios usu)
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
@@ -157,9 +143,6 @@ namespace sistemanovo.Models
                 {
                     // essa parte talvez precise de um IsDBNull assim:
                     // if(!Reader.IsDBNull(Reader.GetOrdinal("bar_code")))
-                    // data e valor nao precisa fazer essa verificação
-                    // string precisa fazer a verificação para nao vir informação inválida
-                    // verificar se tem not null (talvez seja isso)
 
                     id_usuario = Reader.GetInt32("id_usuario"),
                     bar_code = Reader.GetString("bar_code"),
@@ -222,10 +205,7 @@ namespace sistemanovo.Models
             {
                  // essa parte talvez precise de um IsDBNull assim:
                 // if(!Reader.IsDBNull(Reader.GetOrdinal("bar_code")))
-                // data e valor nao precisa fazer essa verificação
-                // string precisa fazer a verificação para nao vir informação inválida
-                // verificar se tem not null (talvez seja isso)
-
+               
                 usuarioEncontrado.id_usuario = Reader.GetInt32("id_usuario");
                 usuarioEncontrado.bar_code = Reader.GetString("bar_code");
                 usuarioEncontrado.cpf = Reader.GetInt32("cpf");
@@ -268,11 +248,7 @@ namespace sistemanovo.Models
             Conexao.Close();
             return usuarioEncontrado;
 
-
         }
-
-
-
         
          public Usuarios ValidarLogin(Usuarios usu)
         {
@@ -296,60 +272,15 @@ namespace sistemanovo.Models
                     // {
                     // essa parte talvez precise de um IsDBNull assim:
                     // if(!Reader.IsDBNull(Reader.GetOrdinal("bar_code")))
-                    // data e valor nao precisa fazer essa verificação
-                    // string precisa fazer a verificação para nao vir informação inválida
-                    // verificar se tem not null (talvez seja isso)
-
-                    //     id_usuario = Reader.GetInt32("id_usuario")
-                    // };
-                    //essa parte anterior é a simplificação sugerida pelo vscode da linha abaixo:
                     id_usuario = Reader.GetInt32("id_usuario")
                 };
 
-                // if (!Reader.IsDBNull(Reader.GetOrdinal("bar_code")))
-                // usuarioEncontrado.bar_code = Reader.GetString("bar_code");
-
-                // usuarioEncontrado.cpf = Reader.GetInt32("cpf");
-                // usuarioEncontrado.rg_n = Reader.GetInt32("rg_n");
-                // usuarioEncontrado.rg_emissor = Reader.GetString("rg_emissor");
-                // usuarioEncontrado.rg_uf = Reader.GetString("rg_uf");
-                // usuarioEncontrado.rg_data_emissao = Reader.GetDateTime("rg_data_emissao");
-
                 if (!Reader.IsDBNull(Reader.GetOrdinal("senha")))
                 usuarioEncontrado.senha = Reader.GetString("senha");
-                
-                // usuarioEncontrado.matricula = Reader.GetInt32("matricula");
-                // usuarioEncontrado.nome_completo = Reader.GetString("nome_completo");
-               
+                        
                 if(!Reader.IsDBNull(Reader.GetOrdinal("nome_usuario")))
                 usuarioEncontrado.nome_usuario = Reader.GetString("nome_usuario");
-                
-                // usuarioEncontrado.empresa = Reader.GetString("empresa");
-                // usuarioEncontrado.atendente = Reader.GetBoolean("atendente");
-                // usuarioEncontrado.ativo = Reader.GetBoolean("ativo");
-                // usuarioEncontrado.operador = Reader.GetBoolean("operador");
-                // usuarioEncontrado.agente = Reader.GetBoolean("agente");
-                // usuarioEncontrado.email = Reader.GetString("email");
-                // usuarioEncontrado.telefone1 = Reader.GetInt32("telefone1");
-                // usuarioEncontrado.telefone2 = Reader.GetInt32("telefone2");
-                // usuarioEncontrado.data_nasc = Reader.GetDateTime("data_nasc");
-                // usuarioEncontrado.fator_rh = Reader.GetString("fator_rh");
-                // usuarioEncontrado.data_adm = Reader.GetDateTime("data_adm");
-                // usuarioEncontrado.endereco = Reader.GetString("endereco");
-                // usuarioEncontrado.endereco_numero = Reader.GetString("endereco_numero");
-                // usuarioEncontrado.endereco_cep = Reader.GetInt32("endereco_cep");
-                // usuarioEncontrado.endereco_comp = Reader.GetString("endereco_comp");
-                // usuarioEncontrado.bairro = Reader.GetString("bairro");
-                // usuarioEncontrado.cidade = Reader.GetString("cidade");
-                // usuarioEncontrado.estado_sigla = Reader.GetString("estado_sigla");
-                // usuarioEncontrado.genero = Reader.GetString("genero");
-                // usuarioEncontrado.nome_pai = Reader.GetString("nome_pai");
-                // usuarioEncontrado.nome_mae = Reader.GetString("nome_mae");
-                // usuarioEncontrado.nacionalidade = Reader.GetString("nacionalidade");
-                // usuarioEncontrado.naturalidade = Reader.GetString("naturalidade");
-                // usuarioEncontrado.habilitado = Reader.GetBoolean("habilitado");
-                // usuarioEncontrado.habilitacao_numero = Reader.GetInt32("habilitacao_numero");
-                // usuarioEncontrado.habilitacao_categoria = Reader.GetString("habilitacao_categoria");
+             
             }
 
             Conexao.Close();

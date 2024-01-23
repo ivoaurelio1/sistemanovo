@@ -5,34 +5,25 @@
 
 <div class="container p-5">
     <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
-    <input type="hidden" asp-for="IdAtDemanda">
-    @* <input type="hidden" asp-for="IdAtAssunto"> *@
+        <input type="hidden" asp-for="IdAtDemanda">
+        <input type="hidden" asp-for="IdAtAssunto">
 
-
-        <p class="mb-3"><label asp-for="dataRegistro" class="form-label">Data / Hora abertura: </label>
-            <input asp-for="dataRegistro" class="form-control">
-        </p>
-        <p class="mb-3"><label asp-for="Demandas.IdUsuario" class="form-label">Usuário: </label>
-            <input asp-for="Demandas.IdUsuario" class="form-control">
-        </p>
         <p class="mb-3"><label asp-for="Demandas.Reclamante" class="form-label">Reclamante: </label>
             <input asp-for="Demandas.Reclamante" class="form-control">
         </p>
         <p class="mb-3"><label asp-for="Demandas.Telefone" class="form-label">Telefone: </label>
             <input asp-for="Demandas.Telefone" class="form-control">
         </p>
-        @* <p class="mb-3"><label asp-for="Demandas.IdAssunto" class="form-label">Assunto: </label>
-            <input asp-for="Demandas.IdAssunto" class="form-control">
-        </p> *@
        
-        
-         <label asp-for="Demandas.IdAssunto">Escolha o assunto</label>
-        <select asp-for="Demandas.IdAssunto">
-            @foreach (AtAssunto ass in Model.ListaAssuntos)
-            {
-                <option value="@ass.IdAtAssunto">@ass.Assunto</option>
-            }
-        </select>
+        <p class="mb-3">
+            <label asp-for="Demandas.IdAssunto" class="form-label">Escolha o assunto</label>
+            <select asp-for="Demandas.IdAssunto">
+                @foreach (AtAssunto ass in Model.ListaAssuntos)
+                {
+                    <option value="@ass.IdAtAssunto">@ass.Assunto</option>
+                }
+            </select>
+        </p>
 
 
 
@@ -52,64 +43,3 @@
     @ViewBag.Mensagem
 </P>
 
-
-@*----------------------------------------------------------------------------*@
-
-@* @model sistemanovo.Models.ViewModels.AssuntoDemandaViewModel
-@{
-    ViewData["Title"] = "Atendimento - Cadastro";
-}
-
-<div class="container p-5">
-    <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
-    <input type="hidden" asp-for="Demandas.IdAtDemanda">
-
-        <p class="mb-3"><label asp-for="Demandas.DataHora" class="form-label">Data / Hora abertura: </label>
-            <input asp-for="Demandas.DataHora" class="form-control">
-        </p>
-        <p class="mb-3"><label asp-for="Demandas.IdUsuario" class="form-label">Usuário: </label>
-            <input asp-for="Demandas.IdUsuario" class="form-control">
-        </p>
-        <p class="mb-3"><label asp-for="Demandas.Reclamante" class="form-label">Reclamante: </label>
-            <input asp-for="Demandas.Reclamante" class="form-control">
-        </p>
-        <p class="mb-3"><label asp-for="Demandas.Telefone" class="form-label">Telefone: </label>
-            <input asp-for="Demandas.Telefone" class="form-control">
-        </p> *@
-
-
-        @* <p class="mb-3"><label asp-for="Demandas.IdAssunto" class="form-label">Assunto: </label>
-            <input asp-for="Demandas.IdAssunto" class="form-control">
-        </p> *@
-
-         @* <label asp-for="IdAtDemanda">Selecione o assunto</label>
-        <select asp-for="IdAtDemanda"> *@
-
-            @* @foreach (AtAssunto ata in Model.ListaAssuntos)
-            {
-                <option value="@ata.IdAtAssunto">@ata.Assunto</option>
-            } *@
-
-
-
-            
-            @* @foreach (AtDemanda ata in Model.ListaDemandas)
-            {
-                <option value="@ata.IdAtDemanda">@ata.IdAtDemanda</option>
-            }
-        </select>
-        <p class="mb-3"><label asp-for="Demandas.Observacao" class="form-label">Observacao: </label>
-            <input asp-for="Demandas.Observacao" class="form-control">
-        </p>
-        <p>
-            <input type="submit" class="btn btn-primary" value="Cadastrar">
-            <a class="btn btn-primary" href="/AtDemanda/Lista">Voltar</a>
-        </p>
-
-
-
-    </form>
-</div>
-<P>
-    @ViewBag.Mensagem
-</P> *@

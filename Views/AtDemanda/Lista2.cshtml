@@ -1,0 +1,79 @@
+@model sistemanovo.Models.ViewModels.CadastroDemandaViewModel
+@{    ViewData["Title"] = "Atendimento - Lista";
+}
+
+<div class="container p-5">
+    <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Cadastro">
+    <input type="hidden" asp-for="IdAtDemanda">
+    @* <input type="hidden" asp-for="IdAtAssunto"> *@
+
+
+        <p class="mb-3"><label asp-for="dataRegistro" class="form-label">Data / Hora abertura: </label>
+            <input asp-for="dataRegistro" class="form-control">
+        </p>
+        <p class="mb-3"><label asp-for="Demandas.IdUsuario" class="form-label">Usuário: </label>
+            <input asp-for="Demandas.IdUsuario" class="form-control">
+        </p>
+        <p class="mb-3"><label asp-for="Demandas.Reclamante" class="form-label">Reclamante: </label>
+            <input asp-for="Demandas.Reclamante" class="form-control">
+        </p>
+        <p class="mb-3"><label asp-for="Demandas.Telefone" class="form-label">Telefone: </label>
+            <input asp-for="Demandas.Telefone" class="form-control">
+        </p>
+       
+         <label asp-for="Demandas.IdAssunto">Escolha o assunto</label>
+        <select asp-for="Demandas.IdAssunto">
+            @foreach (AtAssunto ass in Model.ListaAssuntos)
+            {
+                <option value="@ass.IdAtAssunto">@ass.Assunto</option>
+            }
+        </select>
+
+        <p class="mb-3"><label asp-for="Demandas.Observacao" class="form-label">Observacao: </label>
+            <input asp-for="Demandas.Observacao" class="form-control">
+        </p>
+        <p>
+            <input type="submit" class="btn btn-primary" value="Cadastrar">
+            <a class="btn btn-primary" href="/AtDemanda/Lista">Voltar</a>
+        </p>
+
+
+
+    </form>
+</div>
+<P>
+    @ViewBag.Mensagem
+</P>
+
+@* <table class="table table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th class="text-light">Id</th>
+            <th class="text-light">Data / Hora</th>
+            <th class="text-light">Usuário</th>
+            <th class="text-light">Reclamante</th>
+            <th class="text-light">Telefone</th>
+            <th class="text-light">Assunto</th>
+            <th class="text-light">Observações</th>
+            <th class="text-light">Ações</th>
+        </tr>
+    </thead>
+    @foreach (AtDemanda a in Model.ListaDemandas)
+    {
+       <tr>
+            <td>@a.IdAtDemanda</td>
+            <td>@a.DataHora</td>
+            <td>@a.oUsuario.nome_usuario</td>
+            <td>@a.Reclamante</td>
+            <td>@a.Telefone</td>
+            <td>@a.atAssunto.Assunto</td>
+            <td>@a.Observacao</td>
+            <td>       
+                <a href="/AtDemanda/Editar?Id=@a.IdAtDemanda">Editar</a>
+                <a href="/AtAssunto/Remover?Id=@a.IdAtAssunto">Excluir</a>
+            </td>
+        </tr> 
+    }
+
+</tr> 
+</table> *@

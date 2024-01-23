@@ -26,7 +26,6 @@ namespace sistemanovo.Controllers
         public IActionResult Lista(AtAssunto ata)
         {
             AtAssuntoRepository at = new AtAssuntoRepository();
-            // AtAssunto usuarioEncontrado = us.ValidarLogin(usu);
 
             if (HttpContext.Session.GetInt32("id_usuario") == null)
             {

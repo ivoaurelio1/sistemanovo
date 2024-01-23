@@ -15,10 +15,7 @@ namespace sistemanovo.Models
         public String Reclamante { get; set; }
         public String Telefone { get; set; }
         public int IdAssunto { get; set; }
-
         public AtAssunto atAssunto {get; set;}
-
-        // List<AtAssunto> estava apenas AtAssunto
         public List<AtAssunto> ListaAssunto { get; set; }
         public String Observacao { get; set; }
     }

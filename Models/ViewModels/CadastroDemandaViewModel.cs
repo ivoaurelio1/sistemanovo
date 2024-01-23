@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// namespace sistemanovo.Models.ViewModels <<<<<<<<<<<<<<<<< esse negocio tava assim completo, mas a gnete tirou um pedaço
 namespace sistemanovo.Models.ViewModels
 {
     public class CadastroDemandaViewModel
