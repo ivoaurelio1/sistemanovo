@@ -7,12 +7,12 @@ namespace sistemanovo.Models.ViewModels
 {
     public class CadastroDemandaViewModel
     {
-        public AtDemanda Demandas { get; set; }
+        public AtDemanda? Demandas { get; set; }
 
-        public AtAssunto Assuntos { get; set;}
+        public AtAssunto? Assuntos { get; set;}
 
-        public List<AtDemanda> ListaDemandas { get; set; }
-        public List<AtAssunto> ListaAssuntos { get; set; }
+        public List<AtDemanda>? ListaDemandas { get; set; }
+        public List<AtAssunto>? ListaAssuntos { get; set; }
 
         public int IdAtDemanda { get; set; }
         public int IdAtAssunto { get; set; }

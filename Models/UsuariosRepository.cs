@@ -263,7 +263,7 @@ namespace sistemanovo.Models
 
             MySqlDataReader Reader = Comando.ExecuteReader();
 
-            Usuarios usuarioEncontrado = null;
+            Usuarios? usuarioEncontrado = null;
 
             if (Reader.Read())
             {
