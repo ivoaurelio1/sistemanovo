@@ -109,12 +109,16 @@ namespace sistemanovo.Controllers
             }
 
             AtDemandaRepository at = new AtDemandaRepository();
-            AtDemanda demandaLocalizada = at.BuscarPorId(Id); // 22/01/2024 17:38 coloquei o .Demandas no fim dessa linha
-            return View(demandaLocalizada);
+            CadastroDemandaViewModel cadastroDemandaViewModel = new CadastroDemandaViewModel();
+
+            cadastroDemandaViewModel.Demandas = at.BuscarPorId(Id);
+            
+            // AtDemanda demandaLocalizada = at.BuscarPorId(Id); // 22/01/2024 17:38 coloquei o .Demandas no fim dessa linha
+            return View(cadastroDemandaViewModel);
         }
 
         [HttpPost]
-        public IActionResult Editar(AtDemanda ata)
+        public IActionResult Editar(CadastroDemandaViewModel ata)
         {
              if (HttpContext.Session.GetInt32("id_usuario") == null)
             {
@@ -124,6 +128,9 @@ namespace sistemanovo.Controllers
             AtDemandaRepository at = new AtDemandaRepository();
             at.Alterar(ata);
             return RedirectToAction("Lista", "AtDemanda");
+            
+            // vai precisar disso:
+            // atd.Demandas.IdUsuario = HttpContext.Session.GetInt32("id_usuario").Value;
         }
 
     }

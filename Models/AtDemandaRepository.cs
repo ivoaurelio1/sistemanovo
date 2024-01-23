@@ -33,7 +33,7 @@ namespace sistemanovo.Models.ViewModels
         }
 
 
-        public void Alterar(AtDemanda atd)
+        public void Alterar(CadastroDemandaViewModel atd)
         {
             MySqlConnection Conexao = new MySqlConnection(DadosConexao);
             Conexao.Open();
@@ -41,11 +41,11 @@ namespace sistemanovo.Models.ViewModels
 
             MySqlCommand Comando = new MySqlCommand(Query, Conexao);
             
-            Comando.Parameters.AddWithValue("@IdAtDemanda", atd.IdAtDemanda);
-            Comando.Parameters.AddWithValue("@Reclamante", atd.Reclamante);
-            Comando.Parameters.AddWithValue("@Telefone", atd.Telefone);
-            Comando.Parameters.AddWithValue("@IdAssunto", atd.IdAssunto); // 22/01/2024 17:14 - alterei o caminho pra ver se resolve a questão do NullReferenceException: Object reference not set to an instance of an object na View 'Editar'
-            Comando.Parameters.AddWithValue("@Observacao", atd.Observacao);
+            Comando.Parameters.AddWithValue("@IdAtDemanda", atd.Demandas.IdAtDemanda);
+            Comando.Parameters.AddWithValue("@Reclamante", atd.Demandas.Reclamante);
+            Comando.Parameters.AddWithValue("@Telefone", atd.Demandas.Telefone);
+            Comando.Parameters.AddWithValue("@IdAssunto", atd.Demandas.IdAssunto); // 22/01/2024 17:14 - alterei o caminho pra ver se resolve a questão do NullReferenceException: Object reference not set to an instance of an object na View 'Editar'
+            Comando.Parameters.AddWithValue("@Observacao", atd.Demandas.Observacao);
 
             Comando.ExecuteNonQuery();
             Conexao.Close();

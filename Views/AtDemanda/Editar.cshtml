@@ -1,24 +1,29 @@
-@* 22/01/2024 13:02 - dessa forma abaixo está funcionando  - dar ctrl z nessa pagina *@
-@model AtDemanda
+@model sistemanovo.Models.ViewModels.CadastroDemandaViewModel
 @{
     ViewData["Title"] = "Atendimento - Editar";
 }
+
 <div class="container p-5">
     <form class="col-8 mx-auto p-5 border rounded-1 shadow" method="POST" asp-action="Editar">
-        <input type="hidden" asp-for="IdAtDemanda">
+        <input type="hidden" asp-for="Demandas.IdAtDemanda">
 
-        <p class="mb-3"><label  asp-for="DataHora" class="form-label">Data / Hora abertura: </label>
-        <input asp-for="DataHora" class="form-control" readonly></p>
-        <p class="mb-3"><label asp-for="IdUsuario" class="form-label">Usuário: </label>
-        <input asp-for="IdUsuario" class="form-control" readonly></p>
-        <p class="mb-3"><label asp-for="Reclamante" class="form-label">Reclamante: </label>
-        <input asp-for="Reclamante" class="form-control"></p>
-        <p class="mb-3"><label asp-for="Telefone" class="form-label">Telefone: </label>
-        <input asp-for="Telefone" class="form-control"></p>
-        <p class="mb-3"><label asp-for="IdAssunto" class="form-label">Assunto: </label>
-        <input asp-for="IdAssunto" class="form-control"></p>
-        <p class="mb-3"><label asp-for="Observacao" class="form-label">Observacao: </label>
-        <input asp-for="Observacao" class="form-control"></p>
+        <p class="mb-3"><label  asp-for="Demandas.DataHora" class="form-label">Data / Hora abertura: </label>
+        <input asp-for="Demandas.DataHora" class="form-control" readonly></p>
+        
+        <p class="mb-3"><label asp-for="Demandas.IdUsuario" class="form-label">Usuário: </label>
+        <input asp-for="Demandas.IdUsuario" class="form-control" readonly></p>
+ 
+        <p class="mb-3"><label asp-for="Demandas.Reclamante" class="form-label">Reclamante: </label>
+        <input asp-for="Demandas.Reclamante" class="form-control"></p>
+   
+        <p class="mb-3"><label asp-for="Demandas.Telefone" class="form-label">Telefone: </label>
+        <input asp-for="Demandas.Telefone" class="form-control"></p>
+   
+        <p class="mb-3"><label asp-for="Demandas.IdAssunto" class="form-label">Assunto: </label>
+        <input asp-for="Demandas.IdAssunto" class="form-control"></p>
+   
+        <p class="mb-3"><label asp-for="Demandas.Observacao" class="form-label">Observacao: </label>
+        <input asp-for="Demandas.Observacao" class="form-control"></p>
         
 
         <p>
@@ -28,6 +33,6 @@
 
     </form>
 </div>
-<P>
+<p>
     @ViewBag.Mensagem
-</P>
+</p>
